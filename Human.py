@@ -19,8 +19,25 @@ class Human(Player):
     def __init__(self, symbol):
         super().__init__(symbol)
 
-    def nextMove(self):
-        print("Player %s's turn.",self.symbol)
-        inp = input("Type the row and col to put the disc:")
-        l = inp.split(' ')
+    def nextMove(self,board):
+        while validMove == False:
+            print("Player %s's turn.",self.symbol)
+            validMove = False
+            inp = input("Type the row and col to put the disc:")
+            l = inp.split(' ')
+            if(l[0] < 1 or l[0] > 8 or l[1] <1 or l[1] > 8):
+                validMove = False
+            if(board[l[0]][l[1]] != ' '):
+                validMove = False
+            else:
+                if(checkFlip(board, l) == False):
+                    validMove = False
+                else:
+                    validMove = True
+            if(validMove == False):
+                print("Invalid Input")
+
         return [l[0], l[1]]
+
+    def checkFlip(self,board, move):
+# to be filled

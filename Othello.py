@@ -33,15 +33,14 @@ class Othello:
     def createPlayer(self, symbol, playerNum):
         if symbol == 'O':
             if playerNum == '1':
-                self.player1 = Human(symbol)
-                print('asd')
+                return Human(symbol)
             else:
-                self.player1 = Computer(symbol)
+                return Computer(symbol)
         else:
             if playerNum == '1':
-                self.player2 = Human(symbol)
+                return Human(symbol)
             else:
-                self.player2 == Computer(symbol)
+                return Computer(symbol)
 
     def startGame(self):
 	    #basic logic
