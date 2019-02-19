@@ -44,14 +44,57 @@ class GameBoard:
 
         for i in range(1,7):
             for j in range(1,7):
-                if(self.board[i-1][j] == symbol and self.board[i][j] == anti_symbol and self.board[i+1][j] == ' '):
-                    return True
-                if(self.board[i-1][j] == ' ' and self.board[i][j] == anti_symbol and self.board[i+1][j] == symbol):
-                    return True
-                if(self.board[i][j-1] == symbol and self.board[i][j] == anti_symbol and self.board[i][j+1] == ' '):
-                    return True
-                if(self.board[i][j-1] == ' ' and self.board[i][j] == anti_symbol and self.board[i][j+1] == symbol):
-                    return True
+                if(self.board[i][j] == ' '):
+                    m = i
+                    n = j
+                    while(m <= 6 and self.board[m+1][n] == anti_symbol):
+                        m = m + 1
+                        if(m + 1 <= 7 and self.board[m+1][n] == symbol):
+                            return True
+                    m = i
+                    while(m >= 1 and self.board[m-1][n] == anti_symbol):
+                        m = m - 1
+                        if(m - 1 >= 0 and self.board[m-1][n] == symbol):
+                            return True
+                    m = i
+                    while(n <= 6 and self.board[m][n+1] == anti_symbol):
+                        n = n + 1
+                        if(n + 1 <= 7 and self.board[m][n+1] == symbol):
+                            return True
+                    n = j
+                    while(n >= 1 and self.board[m][n-1] == anti_symbol):
+                        n = n - 1
+                        if(n - 1 >= 0 and self.board[m][n-1] == symbol):
+                            return True
+                    n = j
+                    while(m <= 6 and n <= 6 and self.board[m+1][n+1] == anti_symbol):
+                        m = m + 1
+                        n = n + 1
+                        if(m + 1 <= 7 and n + 1 <= 7 and self.board[m+1][n+1] == symbol):
+                            return True
+                    m = i
+                    n = j
+                    while(m >= 1 and n <= 6 and self.board[m-1][n+1] == anti_symbol):
+                        m = m - 1
+                        n = n + 1
+                        if(m - 1 >= 0 and n + 1 <= 7 and self.board[m-1][n+1] == symbol):
+                            return True
+                    m = i
+                    n = j
+                    while(m <= 6 and n >= 1 and self.board[m+1][n-1] == anti_symbol):
+                        m = m + 1
+                        n = n - 1
+                        if(m + 1 <= 7 and n - 1 >= 0 and self.board[m+1][n-1] == symbol):
+                            return True
+                    m = i
+                    n = j
+                    while(m >= 1 and n >= 1 and self.board[m-1][n-1] == anti_symbol):
+                        m = m - 1
+                        n = n - 1
+                        if(m - 1 >= 1 and n - 1 >= 0 and self.board[m-1][n-1] == symbol):
+                            return True
+                    m = i
+                    n = j
         return False
 
     def check_winner(self):

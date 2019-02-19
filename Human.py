@@ -40,4 +40,4 @@ class Human(Player):
         return [l[0], l[1]]
 
     def checkFlip(self,board, move):
-# to be filled
+
