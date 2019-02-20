@@ -22,12 +22,12 @@ class Human(Player):
     def nextMove(self,board):
         validMove = False
         while validMove == False:
-            print("Player %s's turn.",self.playerSymbol)
+            print("Player %s's turn." % self.playerSymbol)
             validMove = False
             inp = input("Type the row and col to put the disc:")
             l = inp.split(' ')
-            l[0] = int(l[0])
-            l[1] = int(l[1])
+            l[0] = int(l[0]) - 1
+            l[1] = int(l[1]) - 1
             if(l[0] < 1 or l[0] > 8 or l[1] <1 or l[1] > 8):
                 validMove = False
             if(board[l[0]][l[1]] != ' '):
@@ -39,7 +39,6 @@ class Human(Player):
                     validMove = True
             if(validMove == False):
                 print("Invalid Input")
-
         return [l[0], l[1]]
 
     def checkFlip(self,board, move):
