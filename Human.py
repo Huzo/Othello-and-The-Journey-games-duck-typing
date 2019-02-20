@@ -26,17 +26,20 @@ class Human(Player):
             validMove = False
             inp = input("Type the row and col to put the disc:")
             l = inp.split(' ')
-            l[0] = int(l[0]) - 1
-            l[1] = int(l[1]) - 1
-            if(l[0] < 1 or l[0] > 8 or l[1] <1 or l[1] > 8):
-                validMove = False
-            if(board[l[0]][l[1]] != ' '):
+            if(len(l) != 2):
                 validMove = False
             else:
-                if(self.checkFlip(board, l) == False):
+                l[0] = int(l[0]) - 1
+                l[1] = int(l[1]) - 1
+                if(l[0] < 1 or l[0] > 8 or l[1] <1 or l[1] > 8):
+                    validMove = False
+                if(board[l[0]][l[1]] != ' '):
                     validMove = False
                 else:
-                    validMove = True
+                    if(self.checkFlip(board, l) == False):
+                        validMove = False
+                    else:
+                        validMove = True
             if(validMove == False):
                 print("Invalid Input")
         return [l[0], l[1]]

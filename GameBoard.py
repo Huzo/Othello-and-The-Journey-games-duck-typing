@@ -109,7 +109,128 @@ class GameBoard:
         return counts
 
     def execute_flip(self, pos, symbol):
-        self.board[pos[0]][pos[1]] = symbol
+        i , j = pos[0], pos[1]
+        self.board[i][j] = symbol
+        directions = self.find_direcion_to_flip(i, j, symbol)
+        self.execute_directional_flips(i,j,directions, symbol)
+
+    def find_direcion_to_flip(self, i, j, symbol):
+        if(symbol == 'O'):
+            anti_symbol = 'X'
+        else:
+            anti_symbol = 'O'
+
+        directions_to_flip = []
+        m = i
+        n = j
+        while(m <= 6 and self.board[m+1][n] == anti_symbol):
+            m = m + 1
+            if(m + 1 <= 7 and self.board[m+1][n] == symbol):
+                directions_to_flip.append(1)
+        m = i
+        while(m >= 1 and self.board[m-1][n] == anti_symbol):
+            m = m - 1
+            if(m - 1 >= 0 and self.board[m-1][n] == symbol):
+                directions_to_flip.append(2)
+        m = i
+        while(n <= 6 and self.board[m][n+1] == anti_symbol):
+            n = n + 1
+            if(n + 1 <= 7 and self.board[m][n+1] == symbol):
+                directions_to_flip.append(3)
+        n = j
+        while(n >= 1 and self.board[m][n-1] == anti_symbol):
+            n = n - 1
+            if(n - 1 >= 0 and self.board[m][n-1] == symbol):
+                directions_to_flip.append(4)
+        n = j
+        while(m <= 6 and n <= 6 and self.board[m+1][n+1] == anti_symbol):
+            m = m + 1
+            n = n + 1
+            if(m + 1 <= 7 and n + 1 <= 7 and self.board[m+1][n+1] == symbol):
+                directions_to_flip.append(5)
+        m = i
+        n = j
+        while(m >= 1 and n <= 6 and self.board[m-1][n+1] == anti_symbol):
+            m = m - 1
+            n = n + 1
+            if(m - 1 >= 0 and n + 1 <= 7 and self.board[m-1][n+1] == symbol):
+                directions_to_flip.append(6)
+        m = i
+        n = j
+        while(m <= 6 and n >= 1 and self.board[m+1][n-1] == anti_symbol):
+            m = m + 1
+            n = n - 1
+            if(m + 1 <= 7 and n - 1 >= 0 and self.board[m+1][n-1] == symbol):
+                directions_to_flip.append(7)
+        m = i
+        n = j
+        while(m >= 1 and n >= 1 and self.board[m-1][n-1] == anti_symbol):
+            m = m - 1
+            n = n - 1
+            if(m - 1 >= 1 and n - 1 >= 0 and self.board[m-1][n-1] == symbol):
+                directions_to_flip.append(8)
+        return directions_to_flip
+
+    def execute_directional_flips(self,i,j,directions, symbol):
+        if(symbol == 'O'):
+            anti_symbol = 'X'
+        else:
+            anti_symbol = 'O'
+
+        m = i
+        n = j
+
+        for z in directions:
+            if(z == 1):
+                while(m <= 6 and self.board[m+1][n] == anti_symbol):
+                    m = m + 1
+                    self.board[m][n] = symbol
+                m = i
+            elif(z == 2):
+                while(m >= 1 and self.board[m-1][n] == anti_symbol):
+                    m = m - 1
+                    self.board[m][n] = symbol
+                m = i
+            elif(z == 3):
+                while(n <= 6 and self.board[m][n+1] == anti_symbol):
+                    n = n + 1
+                    self.board[m][n] = symbol
+                n = j
+            elif (z == 4):
+                while(n >= 1 and self.board[m][n-1] == anti_symbol):
+                    n = n - 1
+                    self.board[m][n] = symbol
+                n = j
+            elif (z == 5):
+                while(m <= 6 and n <= 6 and self.board[m+1][n+1] == anti_symbol):
+                    m = m + 1
+                    n = n + 1
+                    self.board[m][n] = symbol
+                m = i
+                n = j
+            elif (z == 6):
+                while(m >= 1 and n <= 6 and self.board[m-1][n+1] == anti_symbol):
+                    m = m - 1
+                    n = n + 1
+                    self.board[m][n] = symbol
+                m = i
+                n = j
+            elif (z == 7):
+                while(m <= 6 and n >= 1 and self.board[m+1][n-1] == anti_symbol):
+                    m = m + 1
+                    n = n - 1
+                    self.board[m][n] = symbol
+                m = i
+                n = j
+            elif (z == 8):
+                while(m >= 1 and n >= 1 and self.board[m-1][n-1] == anti_symbol):
+                    m = m - 1
+                    n = n - 1
+                    self.board[m][n] = symbol
+                m = i
+                n = j
+
+        
 
     def printGameBoard(self):
         for i in range(9):
