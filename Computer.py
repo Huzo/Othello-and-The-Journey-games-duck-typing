@@ -10,9 +10,9 @@
 # http://www.cuhk.edu.hk/policy/academichonesty/
 #
 # Assignment 2
-# Name : ***
-# Student ID : **
-# Email Addr : ***
+# Name : Huzeyfe KIRAN
+# Student ID : 1155104019
+# Email Addr : 1155104019@link.cuhk.edu.hk
 from Player import Player
 
 class Computer(Player):
@@ -20,12 +20,14 @@ class Computer(Player):
         super().__init__(symbol)
 
     def nextMove(self, board):
+        # randomly place a valid move
         for i in range(0,8):
         	for j in range(0,8):
         		if(board[i][j] == ' ' and self.checkFlip(board, [i,j]) == True):
         			return [i,j]
 
     def checkFlip(self,board, move):
+        # checks if the move is valid
         if(self.playerSymbol == 'O'):
             anti_symbol = 'X'
         else:

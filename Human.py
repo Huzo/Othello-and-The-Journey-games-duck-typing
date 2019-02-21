@@ -10,9 +10,9 @@
 # http://www.cuhk.edu.hk/policy/academichonesty/
 #
 # Assignment 2
-# Name : ***
-# Student ID : **
-# Email Addr : ***
+# Name : Huzeyfe KIRAN
+# Student ID : 1155104019
+# Email Addr : 1155104019@link.cuhk.edu.hk
 from Player import Player
 
 class Human(Player):
@@ -25,6 +25,8 @@ class Human(Player):
             validMove = False
             inp = input("Type the row and col to put the disc:")
             l = inp.split(' ')
+
+            #check if input is valid
             if(len(l) != 2):
                 validMove = False
             else:
@@ -45,6 +47,7 @@ class Human(Player):
         return [l[0], l[1]]
 
     def checkFlip(self,board, move):
+        # checks if the move is valid
         if(self.playerSymbol == 'O'):
             anti_symbol = 'X'
         else:

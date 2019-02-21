@@ -10,9 +10,9 @@
 # http://www.cuhk.edu.hk/policy/academichonesty/
 #
 # Assignment 2
-# Name : ***
-# Student ID : **
-# Email Addr : ***
+# Name : Huzeyfe KIRAN
+# Student ID : 1155104019
+# Email Addr : 1155104019@link.cuhk.edu.hk
 
 class GameBoard:
     def __init__(self):
@@ -27,7 +27,6 @@ class GameBoard:
 
     def check_ending(self):
         #check whether the game is over or not
-        #return True or False
         if(self.check_legal_move('O') == False and self.check_legal_move('X') == False):
             return True
         else:
@@ -35,8 +34,7 @@ class GameBoard:
 
 
     def check_legal_move(self,symbol):
-	    #check if their is a legal move given symbol
-        #return True or False
+	    #check if there is a legal move given symbol
         if symbol == 'O':
             anti_symbol = 'X'
         else:
@@ -115,6 +113,7 @@ class GameBoard:
         self.execute_directional_flips(i,j,directions, symbol)
 
     def find_direcion_to_flip(self, i, j, symbol):
+        # find the directions to execute the flip
         if(symbol == 'O'):
             anti_symbol = 'X'
         else:
@@ -172,6 +171,7 @@ class GameBoard:
         return directions_to_flip
 
     def execute_directional_flips(self,i,j,directions, symbol):
+        # flip the pieces in the desired directions
         if(symbol == 'O'):
             anti_symbol = 'X'
         else:
