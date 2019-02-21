@@ -51,6 +51,7 @@ class Othello:
 
         while not self.gameBoard.check_ending():
             current_player = [self.player1,self.player2][self.turn]
+            print("Player %s's turn." % current_player.playerSymbol)
 
             if self.gameBoard.check_legal_move(current_player.playerSymbol):
                 pos = current_player.nextMove(self.gameBoard.board)

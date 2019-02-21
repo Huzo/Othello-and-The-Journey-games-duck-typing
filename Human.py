@@ -22,7 +22,6 @@ class Human(Player):
     def nextMove(self,board):
         validMove = False
         while validMove == False:
-            print("Player %s's turn." % self.playerSymbol)
             validMove = False
             inp = input("Type the row and col to put the disc:")
             l = inp.split(' ')

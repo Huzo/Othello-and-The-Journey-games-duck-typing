@@ -42,8 +42,8 @@ class GameBoard:
         else:
             anti_symbol = 'O'
 
-        for i in range(1,7):
-            for j in range(1,7):
+        for i in range(0,8):
+            for j in range(0,8):
                 if(self.board[i][j] == ' '):
                     m = i
                     n = j
@@ -95,6 +95,7 @@ class GameBoard:
                             return True
                     m = i
                     n = j
+        print("There is no valid move for Player %s" % symbol)
         return False
 
     def check_winner(self):
@@ -230,7 +231,7 @@ class GameBoard:
                 m = i
                 n = j
 
-        
+
 
     def printGameBoard(self):
         for i in range(9):
