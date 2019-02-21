@@ -56,6 +56,8 @@ class Othello:
             if self.gameBoard.check_legal_move(current_player.playerSymbol):
                 pos = current_player.nextMove(self.gameBoard.board)
                 self.gameBoard.execute_flip(pos, current_player.playerSymbol)
+            else:
+                print("There is no valid move for Player %s." % current_player.playerSymbol)
             self.turn = 1 - self.turn
 
             self.gameBoard.printGameBoard()

@@ -95,7 +95,6 @@ class GameBoard:
                             return True
                     m = i
                     n = j
-        print("There is no valid move for Player %s" % symbol)
         return False
 
     def check_winner(self):
