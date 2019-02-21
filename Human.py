@@ -41,6 +41,7 @@ class Human(Player):
                         validMove = True
             if(validMove == False):
                 print("Invalid Input")
+                print("Player %s's turn." % self.playerSymbol)
         return [l[0], l[1]]
 
     def checkFlip(self,board, move):
