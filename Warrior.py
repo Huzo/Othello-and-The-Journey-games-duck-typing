@@ -13,15 +13,17 @@ class Warrior():
         self.magic_crystal = 10
 
     def teleport(self):
-        print(("Hi, %s. Your position is (%s,%s) and health is %s." % (self.name, self.pos.x, self.pos.y)))
+        print(("Hi, %s. Your position is (%s,%s) and health is %s." % (self.name, self.pos.x, self.pos.y, self.health)))
         print("Specify your target position (Input 'x y').")
-        posx = int(input())
-        posy = int(input())
-        while(posx == self.posx and posy == self.posy):
+        inp = input()
+        inp = inp.split(' ')
+        posx = int(inp[0])
+        posy = int(inp[1])
+        while(posx == self.pos.x and posy == self.pos.y):
             print("Specify your target position (Input 'x y'). It should not be the same as the original one.")
             posx = int(input())
             posy = int(input())
-        result = self.map.coming(posx, posy, self)
+        result = self.mapp.coming(posx, posy, self)
         if result:
             self.mapp.setLand(self.pos, None)
             self.pos.x = posx

@@ -6,43 +6,40 @@ from Monster import Monster
 import random
 
 D = 10
-totalNum = 0
 teleportable_obj = []
+e = random.randint(1, 3)
+m = random.randint(1, 3)
+w = 1
 
 class Map():
+
     def __init__(self):
-        self.lands = [[None for i in range(D)] for j in range(D)]
-        e = random.randint(1, 3)
-        m = random.randint(1, 3)
-        w = 1
-        totalNum = m + e + w
+        self.lands = [[Land() for i in range(D)] for j in range(D)]
+        self.totalNum = m + e + w
         self.numOfAliveMonsters = m
         self.numOfAliveWarriors = w
 
     def initializeAll(self):
         print("Welcome to Kafustrok. Light blesses you. ")
-        global D, totalNum, teleportable_obj
+        global teleportable_obj
 
-        for i in range(D):
-            for j in range(D):
-                self.lands[i][j] = Land()
-
-        for i in range(totalNum):
-            pos = getUnOccupiedPosition()
+        for i in range(self.totalNum):
+            pos = self.getUnOccupiedPosition()
             if(i < m):
-                self.lands[pos.x][pos.y].setOccupied_obj(Monster(pos.x, pos.y, i, self))
+                self.lands[pos.x][pos.y].occupied_obj = Monster(pos.x, pos.y, i, self)
             elif(i < m+e):
-                self.lands[pos.x][pos.y].setOccupied_obj(Elf(pos.x, pos.y, i-m, self))
+                self.lands[pos.x][pos.y].occupied_obj = Elf(pos.x, pos.y, i-m, self)
             else:
-                self.lands[pos.x][pos.y].setOccupied_obj(Warrior(pos.x, pos.y, i-m-e, self))
-                teleportable_obj.append(self.lands[pos.x][pos.x].occupied_obj)
+                self.lands[pos.x][pos.y].occupied_obj = Warrior(pos.x, pos.y, i-m-e, self)
+                teleportable_obj.append(self.lands[pos.x][pos.y].occupied_obj)
 
     def teleportAll(self):
         global teleportable_obj
 
-        for obj in teleportable_obj:
-            if isinstance(obj, Warrior):
-                obj.teleport()
+        for i in range(len(teleportable_obj)):
+            if(teleportable_obj[i] != None):
+                teleportable_obj[i].teleport()
+                print('asd')
 
     def coming(self, posx, posy, warrior):
         return self.lands[posx][posy].coming(warrior)

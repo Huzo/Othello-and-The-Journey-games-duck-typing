@@ -5,8 +5,9 @@ class Land():
         self.occupied_obj = None
 
     def coming(self, warrior):
-        return actionOnWarrior(warrior)
+        if(self.occupied_obj != None):
+            return self.occupied_obj.actionOnWarrior(warrior)
 
     def getOccupantName(self):
-        if(isinstance(self.occupied_obj, NPC)):
+        if(self.occupied_obj != None):
             return self.occupied_obj.name
