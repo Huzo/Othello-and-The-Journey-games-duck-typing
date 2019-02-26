@@ -70,24 +70,24 @@ class Map():
                     occupantName = "  "
                 printObject[i][j] = occupantName
 
-            print(" ",end="")
-            for i in range(D):
-                print(("| %s  " % str(i)),end="")
+        print(" ",end="")
+        for i in range(D):
+            print(("| %s  " % str(i)),end="")
 
+        print("|")
+
+        for i in range(int(D * 5.5)):
+            print("-",end="")
+        print("")
+
+        for row in range(D):
+            print(row,end="")
+            for col in range(D):
+                print(("| %s " % printObject[row][col]), end="")
             print("|")
-
             for i in range(int(D * 5.5)):
                 print("-",end="")
             print("")
-
-            for row in range(D):
-                print(row,end="")
-                for col in range(D):
-                    print(("| %s " % printObject[row][col]), end="")
-                print("|")
-                for i in range(int(D * 5.5)):
-                    print("-",end="")
-                print("")
 
     def decreaseNumOfAliveMonsters(self):
         self.numOfAliveMonsters = self.numOfAliveMonsters - 1
