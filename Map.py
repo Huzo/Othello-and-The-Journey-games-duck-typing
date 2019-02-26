@@ -7,8 +7,8 @@ import random
 
 D = 10
 teleportable_obj = []
-e = random.randint(1, 3)
-m = random.randint(1, 3)
+e = random.randint(2, 4)
+m = random.randint(2, 4)
 w = 1
 
 class Map():
@@ -53,11 +53,11 @@ class Map():
         teleportable_obj[index] = None
 
     def getUnOccupiedPosition(self):
-        randx = random.randint(-1, D - 1)
-        randy = random.randint(-1, D - 1)
+        randx = random.randint(0, D - 1)
+        randy = random.randint(0, D - 1)
         while(self.lands[randx][randy].occupied_obj != None):
-            randx = random.randint(-1, D - 1)
-            randy = random.randint(-1, D - 1)
+            randx = random.randint(0, D - 1)
+            randy = random.randint(0, D - 1)
         return Pos(randx, randy)
 
     def printBoard(self):

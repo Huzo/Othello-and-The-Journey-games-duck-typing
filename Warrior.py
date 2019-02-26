@@ -1,4 +1,3 @@
-import random
 from Pos import Pos
 
 HEALTH_CAP = 10
@@ -21,8 +20,10 @@ class Warrior():
         posy = int(inp[1])
         while(posx == self.pos.x and posy == self.pos.y):
             print("Specify your target position (Input 'x y'). It should not be the same as the original one.")
-            posx = int(input())
-            posy = int(input())
+            inp = input()
+            inp = inp.split(' ')
+            posx = int(inp[0])
+            posy = int(inp[1])
         result = self.mapp.coming(posx, posy, self)
         if result:
             self.mapp.setLand(self.pos, None)

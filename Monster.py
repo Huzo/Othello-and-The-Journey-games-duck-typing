@@ -7,7 +7,7 @@ class Monster(NPC):
     def __init__(self, posx, posy, index, mapp):
         super().__init__(posx, posy, index, mapp)
         self.name = "M%s" % str(index)
-        self.power = random.randint(4, DAMAGE_CAP - 1)
+        self.power = random.randint(5, DAMAGE_CAP - 1)
 
     def actionOnWarrior(self, warrior):
         self.talk(("I am the monster %s. Here is my territory.  My damage power is %s." % (self.name, self.power)));
@@ -22,7 +22,7 @@ class Monster(NPC):
         if(a == 1):
             if(warrior.health > self.power):
                 warrior.decreaseHealth(self.power)
-                warrior.increaseCrystal(random.randint(-1, 4))
+                warrior.increaseCrystal(random.randint(5, 9))
                 warrior.talk(("Nice, I have killed the monster %s." % self.name))
                 self.mapp.decreaseNumOfAliveMonsters()
                 return True
