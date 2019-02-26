@@ -10,7 +10,7 @@ class Elf(NPC):
         self.name = "E%s" % str(index)
         self.power = random.randint(4, self.MAGIC_CAP - 1)
 
-    def actionOnWarrior(warrior):
+    def actionOnWarrior(self, warrior):
         self.talk(("My name is %s. Welcome tomy home.  My magic power is %s." % (self.name, str(self.power))))
         self.talk(("Your magic crystal is %s." % warrior.magic_crystal))
         self.talk("Do you need my help?")

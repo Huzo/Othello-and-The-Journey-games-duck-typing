@@ -39,7 +39,6 @@ class Map():
         for i in range(len(teleportable_obj)):
             if(teleportable_obj[i] != None):
                 teleportable_obj[i].teleport()
-                print('asd')
 
     def coming(self, posx, posy, warrior):
         return self.lands[posx][posy].coming(warrior)
@@ -68,12 +67,12 @@ class Map():
             for j in range(D):
                 occupantName = self.lands[i][j].getOccupantName()
                 if occupantName == None:
-                    occupantName = " "
+                    occupantName = "  "
                 printObject[i][j] = occupantName
 
-            print(" ")
+            print(" ",end="")
             for i in range(D):
-                print(("| %s " % str(i)),end="")
+                print(("| %s  " % str(i)),end="")
 
             print("|")
 

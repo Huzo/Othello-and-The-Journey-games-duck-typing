@@ -49,5 +49,5 @@ class Warrior():
         if self.health > HEALTH_CAP:
             self.health = HEALTH_CAP
 
-    def decreaseHeatlth(self, value):
+    def decreaseHealth(self, value):
         self.health = self.health - value
