@@ -24,7 +24,7 @@ class Monster(NPC):
                 warrior.decreaseHealth(self._power)
                 warrior.increaseCrystal(random.randint(5, 9))
                 warrior.talk(("Nice, I have killed the monster %s." % self._name))
-                self.mapp.decreaseNumOfAliveMonsters()
+                self._map.decreaseNumOfAliveMonsters()
                 return True
             warrior.decreaseHealth(self.power)
         return False
