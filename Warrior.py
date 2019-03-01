@@ -1,6 +1,6 @@
 from Pos import Pos
 
-HEALTH_CAP = 10
+HEALTH_CAP = 40
 
 class Warrior():
     def __init__(self, posx, posy, index, mapp):
