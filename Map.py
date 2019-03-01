@@ -3,19 +3,21 @@ from Pos import Pos
 from Elf import Elf
 from Warrior import Warrior
 from Monster import Monster
+from Potion import Potion
 import random
 
 D = 10
 teleportable_obj = []
 e = random.randint(2, 4)
 m = random.randint(2, 4)
-w = 1
+p = random.randint(2, 4)
+w = random.randint(2, 4)
 
 class Map():
 
     def __init__(self):
         self._lands = [[Land() for i in range(D)] for j in range(D)]
-        self.totalNum = m + e + w
+        self.totalNum = m + e + p + w
         self._numOfAliveMonsters = m
         self._numOfAliveWarriors = w
 
@@ -29,8 +31,11 @@ class Map():
                 self._lands[pos.x][pos.y].occupied_obj = Monster(pos.x, pos.y, i, self)
             elif(i < m+e):
                 self._lands[pos.x][pos.y].occupied_obj = Elf(pos.x, pos.y, i-m, self)
+            elif(i < m+e+p):
+                self._lands[pos.x][pos.y].occupied_obj = Potion(pos.x, pos.y, i-m-e, self)
+                teleportable_obj.append(self._lands[pos.x][pos.y].occupied_obj)
             else:
-                self._lands[pos.x][pos.y].occupied_obj = Warrior(pos.x, pos.y, i-m-e, self)
+                self._lands[pos.x][pos.y].occupied_obj = Warrior(pos.x, pos.y, i-m-e-p, self)
                 teleportable_obj.append(self._lands[pos.x][pos.y].occupied_obj)
 
     def teleportAll(self):

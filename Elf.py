@@ -26,6 +26,6 @@ class Elf(NPC):
                 warrior.talk(("Thanks for your help! %s" % self.name))
             else:
                 warrior.talk("Very embarrassing, I don't have enough crystals.")
-            return False
+        return False
 
 

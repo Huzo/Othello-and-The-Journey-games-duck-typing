@@ -1,3 +1,4 @@
+import random
 from Pos import Pos
 
 HEALTH_CAP = 40
@@ -10,6 +11,21 @@ class Warrior():
         self._name = ("W%s" % str(index))
         self._health = HEALTH_CAP
         self._magic_crystal = 10
+
+    def actionOnWarrior(self, warrior):
+        self.talk("Hi, bro. You can call me %s. I am very happy to meet you. I have %s magic crystals." % (self.name, int(self._magic_crystal)))
+        self.talk("The number of your magic crystals is %s." % int(warrior.magic_crystal))
+        self.talk("Need I share with you some magic crystals?")
+        self.talk("You now have following options: ")
+        print("1. Yes")
+        print("2. No")
+        a = int(input())
+        if(a == 1):
+            value = random.randint(1, self._magic_crystal)
+            self.decreaseCrystal(value)
+            warrior.increaseCrystal(value)
+            warrior.talk("Thanks for your shared %s crystals! %s." % (int(value), self.name))
+        return False
 
     def teleport(self):
         print(("Hi, %s. Your position is (%s,%s) and health is %s." % (self._name, self._pos.x, self._pos.y, self._health)))
@@ -29,6 +45,7 @@ class Warrior():
             self._map.setLand(self._pos, None)
             self._pos.setPos(posx, posy)
             self._map.setLand(self._pos, self)
+            self._map.printBoard()
 
         if self.health <= 0:
             print("Very sorry, %s has been killed." % self.name)
