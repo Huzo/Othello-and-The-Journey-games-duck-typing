@@ -2,20 +2,20 @@ from Map import Map
 
 class TheJourney:
     def __init__(self):
-        self.mapp = Map()
+        self._map = Map()
 
     def gameStart(self):
-        self.mapp.initializeAll()
+        self._map.initializeAll()
 
-        numOfAliveMonsters = self.mapp.numOfAliveMonsters
-        numOfAliveWarriors = self.mapp.numOfAliveWarriors
+        numOfAliveMonsters = self._map.numOfAliveMonsters
+        numOfAliveWarriors = self._map.numOfAliveWarriors
 
         while(numOfAliveMonsters > 0 and numOfAliveWarriors > 0):
-            self.mapp.printBoard()
-            self.mapp.teleportAll()
+            self._map.printBoard()
+            self._map.teleportAll()
 
-            numOfAliveMonsters = self.mapp.numOfAliveMonsters
-            numOfAliveWarriors = self.mapp.numOfAliveWarriors
+            numOfAliveMonsters = self._map.numOfAliveMonsters
+            numOfAliveWarriors = self._map.numOfAliveWarriors
 
         if numOfAliveMonsters == 0:
             print("Congratulations, all the monsters have been killed.")

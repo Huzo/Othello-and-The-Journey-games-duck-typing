@@ -2,13 +2,21 @@ from NPC import NPC
 
 class Land():
     def __init__(self):
-        self.occupied_obj = None
+        self._occupied_obj = None
 
     def coming(self, warrior):
-        if(self.occupied_obj != None):
-            return self.occupied_obj.actionOnWarrior(warrior)
+        if(self._occupied_obj != None):
+            return self._occupied_obj.actionOnWarrior(warrior)
         return True
 
+    @property
+    def occupied_obj(self):
+        return self._occupied_obj
+
+    @occupied_obj.setter
+    def occupied_obj(self, occupied_obj):
+        self._occupied_obj = occupied_obj
+
     def getOccupantName(self):
-        if(self.occupied_obj != None):
-            return self.occupied_obj.name
+        if(self._occupied_obj != None):
+            return self._occupied_obj.name

@@ -14,10 +14,10 @@ w = 1
 class Map():
 
     def __init__(self):
-        self.lands = [[Land() for i in range(D)] for j in range(D)]
+        self._lands = [[Land() for i in range(D)] for j in range(D)]
         self.totalNum = m + e + w
-        self.numOfAliveMonsters = m
-        self.numOfAliveWarriors = w
+        self._numOfAliveMonsters = m
+        self._numOfAliveWarriors = w
 
     def initializeAll(self):
         print("Welcome to Kafustrok. Light blesses you. ")
@@ -26,12 +26,12 @@ class Map():
         for i in range(self.totalNum):
             pos = self.getUnOccupiedPosition()
             if(i < m):
-                self.lands[pos.x][pos.y].occupied_obj = Monster(pos.x, pos.y, i, self)
+                self._lands[pos.x][pos.y].occupied_obj = Monster(pos.x, pos.y, i, self)
             elif(i < m+e):
-                self.lands[pos.x][pos.y].occupied_obj = Elf(pos.x, pos.y, i-m, self)
+                self._lands[pos.x][pos.y].occupied_obj = Elf(pos.x, pos.y, i-m, self)
             else:
-                self.lands[pos.x][pos.y].occupied_obj = Warrior(pos.x, pos.y, i-m-e, self)
-                teleportable_obj.append(self.lands[pos.x][pos.y].occupied_obj)
+                self._lands[pos.x][pos.y].occupied_obj = Warrior(pos.x, pos.y, i-m-e, self)
+                teleportable_obj.append(self._lands[pos.x][pos.y].occupied_obj)
 
     def teleportAll(self):
         global teleportable_obj
@@ -41,10 +41,10 @@ class Map():
                 teleportable_obj[i].teleport()
 
     def coming(self, posx, posy, warrior):
-        return self.lands[posx][posy].coming(warrior)
+        return self._lands[posx][posy].coming(warrior)
 
-    def setLand(self, _pos, occupied_obj):
-        self.lands[_pos.x][_pos.y].occupied_obj = occupied_obj
+    def setLand(self, pos, occupied_obj):
+        self._lands[pos.x][pos.y].occupied_obj = occupied_obj
 
     def deleteTeleportableObj(self, obj):
         global teleportable_obj
@@ -55,7 +55,7 @@ class Map():
     def getUnOccupiedPosition(self):
         randx = random.randint(0, D - 1)
         randy = random.randint(0, D - 1)
-        while(self.lands[randx][randy].occupied_obj != None):
+        while(self._lands[randx][randy].occupied_obj != None):
             randx = random.randint(0, D - 1)
             randy = random.randint(0, D - 1)
         return Pos(randx, randy)
@@ -65,7 +65,7 @@ class Map():
 
         for i in range(D):
             for j in range(D):
-                occupantName = self.lands[i][j].getOccupantName()
+                occupantName = self._lands[i][j].getOccupantName()
                 if occupantName == None:
                     occupantName = "  "
                 printObject[i][j] = occupantName
@@ -90,7 +90,23 @@ class Map():
             print("")
 
     def decreaseNumOfAliveMonsters(self):
-        self.numOfAliveMonsters = self.numOfAliveMonsters - 1
+        self._numOfAliveMonsters = self._numOfAliveMonsters - 1
 
     def decreaseNumOfWarriors(self):
-        self.numOfAliveWarriors = self.numOfAliveWarriors - 1
+        self._numOfAliveWarriors = self._numOfAliveWarriors - 1
+
+    @property
+    def numOfAliveMonsters(self):
+        return self._numOfAliveMonsters
+
+    @numOfAliveMonsters.setter
+    def numOfAliveMonsters(self, numOfAliveMonsters):
+        self._numOfAliveMonsters = numOfAliveMonsters
+
+    @property
+    def numOfAliveWarriors(self):
+        return self._numOfAliveWarriors
+
+    @numOfAliveWarriors.setter
+    def numOfAliveWarriors(self, numOfAliveWarriors):
+        self._numOfAliveWarriors = numOfAliveWarriors
