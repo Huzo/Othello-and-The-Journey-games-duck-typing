@@ -32,9 +32,9 @@ class Human(Player):
             else:
                 l[0] = int(l[0]) - 1
                 l[1] = int(l[1]) - 1
-                if(l[0] < 1 or l[0] > 8 or l[1] <1 or l[1] > 8):
+                if(l[0] < 0 or l[0] > 7 or l[1] <0 or l[1] > 7):
                     validMove = False
-                if(board[l[0]][l[1]] != ' '):
+                elif(board[l[0]][l[1]] != ' '):
                     validMove = False
                 else:
                     if(self.checkFlip(board, l) == False):
