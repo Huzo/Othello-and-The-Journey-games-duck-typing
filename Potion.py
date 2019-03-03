@@ -19,6 +19,8 @@ class Potion(NPC):
 
         self._map.deleteTeleportableObj(self)
 
+        return False
+
     def teleport(self):
         posx = random.randint(0,9)
         posy = random.randint(0,9)
