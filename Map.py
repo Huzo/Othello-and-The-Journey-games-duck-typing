@@ -31,11 +31,11 @@ class Map():
                 self._lands[pos.x][pos.y].occupied_obj = Monster(pos.x, pos.y, i, self)
             elif(i < m+e):
                 self._lands[pos.x][pos.y].occupied_obj = Elf(pos.x, pos.y, i-m, self)
-            elif(i < m+e+p):
-                self._lands[pos.x][pos.y].occupied_obj = Potion(pos.x, pos.y, i-m-e, self)
+            elif(i < m+e+w):
+                self._lands[pos.x][pos.y].occupied_obj = Warrior(pos.x, pos.y, i-m-e, self)
                 teleportable_obj.append(self._lands[pos.x][pos.y].occupied_obj)
             else:
-                self._lands[pos.x][pos.y].occupied_obj = Warrior(pos.x, pos.y, i-m-e-p, self)
+                self._lands[pos.x][pos.y].occupied_obj = Potion(pos.x, pos.y, i-m-e-w, self)
                 teleportable_obj.append(self._lands[pos.x][pos.y].occupied_obj)
 
     def teleportAll(self):

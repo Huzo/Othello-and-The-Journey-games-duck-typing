@@ -12,6 +12,12 @@ class Potion(NPC):
     def actionOnWarrior(self, warrior):
         warrior.increaseHealth(self._amount)
         warrior.talk(("Very good, I got additional healing potion %s." % self.name))
+        warrior._map.setLand(warrior._pos, None)
+        warrior._pos.setPos(self.pos.x, self.pos.y)
+        warrior._map.setLand(warrior.pos, warrior)
+        self._pos.setPos(None, None)
+
+        self._map.deleteTeleportableObj(self)
 
     def teleport(self):
         posx = random.randint(0,9)
