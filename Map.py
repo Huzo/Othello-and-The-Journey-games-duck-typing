@@ -70,7 +70,7 @@ class Map():
 
         for i in range(D):
             for j in range(D):
-                occupantName = self._lands[i][j].getOccupantName()
+                occupantName = self._lands[i][j].get_occupant_name()
                 if occupantName == None:
                     occupantName = "  "
                 printObject[i][j] = occupantName

@@ -17,6 +17,6 @@ class Land():
     def occupied_obj(self, occupied_obj):
         self._occupied_obj = occupied_obj
 
-    def getOccupantName(self):
+    def get_occupant_name(self):
         if(self._occupied_obj != None):
             return self._occupied_obj.name
