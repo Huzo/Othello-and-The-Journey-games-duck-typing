@@ -6,7 +6,7 @@ class Land():
 
     def coming(self, warrior):
         if(self._occupied_obj != None):
-            return self._occupied_obj.actionOnWarrior(warrior)
+            return self._occupied_obj.action_on_warrior(warrior)
         return True
 
     @property

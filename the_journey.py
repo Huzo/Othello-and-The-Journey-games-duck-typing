@@ -4,24 +4,24 @@ class TheJourney:
     def __init__(self):
         self._map = Map()
 
-    def gameStart(self):
-        self._map.initializeAll()
+    def game_start(self):
+        self._map.initialize_all()
 
-        numOfAliveMonsters = self._map.numOfAliveMonsters
-        numOfAliveWarriors = self._map.numOfAliveWarriors
+        num_of_alive_monsters = self._map.num_of_alive_monsters
+        num_of_alive_warriors = self._map.num_of_alive_warriors
 
-        while(numOfAliveMonsters > 0 and numOfAliveWarriors > 0):
-            self._map.printBoard()
-            self._map.teleportAll()
+        while(num_of_alive_monsters > 0 and num_of_alive_warriors > 0):
+            self._map.print_board()
+            self._map.teleport_all()
 
-            numOfAliveMonsters = self._map.numOfAliveMonsters
-            numOfAliveWarriors = self._map.numOfAliveWarriors
+            num_of_alive_monsters = self._map.num_of_alive_monsters
+            num_of_alive_warriors = self._map.num_of_alive_warriors
 
-        if numOfAliveMonsters == 0:
+        if num_of_alive_monsters == 0:
             print("Congratulations, all the monsters have been killed.")
         else:
             print("Unfortunately, the mission failed and all the warriors died.")
 
 if __name__ == "__main__":
     game = TheJourney()
-    game.gameStart()
+    game.game_start()

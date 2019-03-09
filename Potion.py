@@ -9,15 +9,15 @@ class Potion(NPC):
         self._name = "P%s" % str(index)
         self._amount = random.randint(5, AMOUNT_CAP - 1)
 
-    def actionOnWarrior(self, warrior):
-        warrior.increaseHealth(self._amount)
+    def action_on_warrior(self, warrior):
+        warrior.increase_health(self._amount)
         warrior.talk(("Very good, I got additional healing potion %s." % self.name))
-        warrior._map.setLand(warrior._pos, None)
-        warrior._pos.setPos(self.pos.x, self.pos.y)
-        warrior._map.setLand(warrior.pos, warrior)
-        self._pos.setPos(None, None)
+        warrior._map.set_land(warrior._pos, None)
+        warrior._pos.set_pos(self.pos.x, self.pos.y)
+        warrior._map.set_land(warrior.pos, warrior)
+        self._pos.set_pos(None, None)
 
-        self._map.deleteTeleportableObj(self)
+        self._map.delete_teleportable_obj(self)
 
         return False
 
@@ -29,7 +29,7 @@ class Potion(NPC):
             posx = random.randint(0,9)
             posy = random.randint(0,9)
 
-        self._map.setLand(self._pos, None)
-        self._pos.setPos(posx, posy)
-        self._map.setLand(self._pos, self)
+        self._map.set_land(self._pos, None)
+        self._pos.set_pos(posx, posy)
+        self._map.set_land(self._pos, self)
 

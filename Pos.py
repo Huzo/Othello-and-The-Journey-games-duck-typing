@@ -3,7 +3,7 @@ class Pos:
         self._x = x
         self._y = y
 
-    def setPos(self, x, y):
+    def set_pos(self, x, y):
         self._x = x
         self._y = y
 

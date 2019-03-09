@@ -11,7 +11,7 @@ class NPC():
     def talk(self, content):
         print("%s: %s" % (self._name, content))
 
-    def actionOnWarrior(self, warrior):
+    def action_on_warrior(self, warrior):
         return False
 
     @property

@@ -12,7 +12,7 @@ class Warrior():
         self._health = HEALTH_CAP
         self._magic_crystal = 10
 
-    def actionOnWarrior(self, warrior):
+    def action_on_warrior(self, warrior):
         self.talk("Hi, bro. You can call me %s. I am very happy to meet you. I have %s magic crystals." % (self.name, int(self._magic_crystal)))
         self.talk("The number of your magic crystals is %s." % int(warrior.magic_crystal))
         self.talk("Need I share with you some magic crystals?")
@@ -22,8 +22,8 @@ class Warrior():
         a = int(input())
         if(a == 1):
             value = random.randint(1, self._magic_crystal)
-            self.decreaseCrystal(value)
-            warrior.increaseCrystal(value)
+            self.decrease_crystal(value)
+            warrior.increase_crystal(value)
             warrior.talk("Thanks for your shared %s crystals! %s." % (int(value), self.name))
         return False
 
@@ -42,32 +42,32 @@ class Warrior():
             posy = int(inp[1])
         result = self._map.coming(posx, posy, self)
         if result:
-            self._map.setLand(self._pos, None)
-            self._pos.setPos(posx, posy)
-            self._map.setLand(self._pos, self)
-            self._map.printBoard()
+            self._map.set_land(self._pos, None)
+            self._pos.set_pos(posx, posy)
+            self._map.set_land(self._pos, self)
+            self._map.print_board()
 
         if self.health <= 0:
             print("Very sorry, %s has been killed." % self.name)
-            self._map.setLand(self.pos, None)
-            self._map.deleteTeleportableObj(self)
-            self._map.decreaseNumOfWarriors()
+            self._map.set_land(self.pos, None)
+            self._map.delete_teleportable_obj(self)
+            self._map.decrease_num_of_warriors()
 
     def talk(self, content):
         print("%s: %s" % (self._name, content))
 
-    def increaseCrystal(self, value):
+    def increase_crystal(self, value):
         self._magic_crystal = self._magic_crystal + value
 
-    def decreaseCrystal(self, value):
+    def decrease_crystal(self, value):
         self._magic_crystal = self._magic_crystal - value
 
-    def increaseHealth(self, value):
+    def increase_health(self, value):
         self._health = self._health + value
         if self._health > HEALTH_CAP:
             self._health = HEALTH_CAP
 
-    def decreaseHealth(self, value):
+    def decrease_health(self, value):
         self._health = self._health - value
 
     @property
