@@ -11,9 +11,9 @@
  * http://www.cuhk.edu.hk/policy/academichonesty/
  *
  * Assignment 2
- * Name : ***
- * Student ID : **
- * Email Addr : ***
+ * Name : Huzeyfe Kiran
+ * Student ID : 1155104019
+ * Email Addr : 1155104019@link.cuhk.edu.hk
  */
 public class Elf extends NPC{
     
