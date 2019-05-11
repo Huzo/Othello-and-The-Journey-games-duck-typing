@@ -55,7 +55,7 @@ As shown in Figure 1, suppose you are the black-disc player and the board on the
 the current condition. On the right, the discs with yellow border show the four possible locations
 for your next disc, since you can then flip some of your opponent’s discs.
 
-
+![](https://github.com/Huzo/Othello-and-The-Journey-games-duck-typing/blob/master/figure1.png)
 ```
 Figure 1: Possible moves for Othello
 ```
@@ -68,6 +68,8 @@ placing any disc. A game ends when:
 As shown in Figure 2(a)&(b), the player having more discs of his/her color is the winner. The
 game is a tie if the number of white discs equals the number of black discs. Here is a web-based
 online Othello game that you can try:https://www.coolmath-games.com/0-reversi.
+
+![](https://github.com/Huzo/Othello-and-The-Journey-games-duck-typing/blob/master/figure2.png)
 
 Figure 2: (a) Player O has won with a fully filled chessboard; (b) Player X has won with a partially
 filled chessboard; (c) A tie;
@@ -97,6 +99,8 @@ Type of Players
 Users can choose Player X and Player O to be either human- or computer-controlled. You have
 to use the command line to request for the types of the two players before starting the game (as
 shown in Figure 3).
+
+![](https://github.com/Huzo/Othello-and-The-Journey-games-duck-typing/blob/master/figure3.png)
 
 ```
 Figure 3: Players’ types
@@ -140,6 +144,8 @@ to implement it with the following components:
 
 - This is an integer variable (0 for player1, 1 for player2) indicating which player
 should play in the current turn.
+
+![](https://github.com/Huzo/Othello-and-The-Journey-games-duck-typing/blob/master/figure4.png)
 
 ```
 Figure 4: Example gameplay output. (a) No legal movement; (b) Invalid inputs
@@ -344,5 +350,7 @@ be distributed in different positions.
 
 You are now required to modify/extend both the Java and Python implementation of Task 3. You
 will also be evaluated on your programming style.
+
+![](https://github.com/Huzo/Othello-and-The-Journey-games-duck-typing/blob/master/figure5.png)
 
 Figure 5: Example gameplay output. (a) when meet a life potion; (b) when meet another warrior
